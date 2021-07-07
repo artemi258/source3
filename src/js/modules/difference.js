@@ -1,18 +1,23 @@
 export default class Difference {
     constructor(oldOfficer, newOfficer, items) {
-        this.oldOfficer = document.querySelector(oldOfficer);
-        this.newOfficer = document.querySelector(newOfficer);
-        this.oldItems = this.oldOfficer.querySelectorAll(items);
-        this.newItems = this.newOfficer.querySelectorAll(items);
-        this.newOfficer.querySelectorAll(this.items);
-        this.oldCounter = 0;
-        this.newCounter = 0;
+        try {
+            this.oldOfficer = document.querySelector(oldOfficer);
+            this.newOfficer = document.querySelector(newOfficer);
+            this.oldItems = this.oldOfficer.querySelectorAll(items);
+            this.newItems = this.newOfficer.querySelectorAll(items);
+            this.newOfficer.querySelectorAll(this.items);
+            this.oldCounter = 0;
+            this.newCounter = 0;
+        } catch (error) {
+
+        }
+
     }
 
     bindTrigger(officer, officerCount, officerItems) {
         officer.querySelector('.plus').addEventListener('click', () => {
-            if (officerCount ===  officerItems.length - 2) {
-                officerItems[ officerItems.length - 1].remove();
+            if (officerCount === officerItems.length - 2) {
+                officerItems[officerItems.length - 1].remove();
             }
             officerItems[officerCount].style.display = 'flex';
             officerCount++;
@@ -28,9 +33,12 @@ export default class Difference {
     }
 
     init() {
-        this.hideItems(this.oldItems);
-        this.hideItems(this.newItems);
-        this.bindTrigger(this.oldOfficer, this.oldCounter, this.oldItems);
-        this.bindTrigger(this.newOfficer, this.newCounter, this.newItems);
+        try {
+            this.hideItems(this.oldItems);
+            this.hideItems(this.newItems);
+            this.bindTrigger(this.oldOfficer, this.oldCounter, this.oldItems);
+            this.bindTrigger(this.newOfficer, this.newCounter, this.newItems);
+        } catch (error) {
+        }
     }
 }

@@ -7,6 +7,8 @@ import Forms from './modules/forms';
 window.addEventListener('DOMContentLoaded', () => {
     const slider = new MainSliders({ container : '.page', btns : '.next'});
     slider.render();
+    const sliderModulew = new MainSliders({ container : '.moduleapp', btns : '.sidecontrol__controls .next', prevModules : '.prevmodule',  nextModules: '.nextmodule'});
+    sliderModulew.render();
 
     const showUpSlider = new SliderMini ({container: '.showup__content-slider', next: '.showup__next', prev: '.showup__prev', active: 'card-active', animate: true});
     showUpSlider.init();

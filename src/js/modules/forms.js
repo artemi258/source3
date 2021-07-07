@@ -5,12 +5,12 @@ export default class Forms {
     }
 
     postData(url, data) {
-    const post = async () => {
-        let res = await fetch(url, {
-            method: "POST",
-            body: data
-        });
-        return await res.text();
+        const post = async () => {
+            let res = await fetch(url, {
+                method: "POST",
+                body: data
+            });
+            return await res.text();
         };
         return post();
     }
@@ -23,9 +23,9 @@ export default class Forms {
                 const formData = new FormData(item);
 
                 this.postData('./assets/question.php', formData)
-                .then(item => {
-                    console.log(item);
-                });
+                    .then(item => {
+                        console.log(item);
+                    });
             });
         });
     }
@@ -38,7 +38,7 @@ export default class Forms {
                     item.value = '';
                 }
             });
-            
+
         });
     }
 
@@ -56,38 +56,42 @@ export default class Forms {
                 range.select();
             }
         };
-    
+
         function createMask(event) {
             let matrix = '+1 (___) ___-____',
                 i = 0,
                 def = matrix.replace(/\D/g, ''),
                 val = this.value.replace(/\D/g, ''),
                 checkMask = matrix.charAt(1);
-    
-                if (def.length >= val.length || this.value.charAt(1) !== checkMask) {
-                    val = def;
-                }
-    
-                this.value = matrix.replace(/./g, function(a) {
-                    return /[_\d]/.test(a) && i < val.length ? val.charAt(i++) : i >= val.length ? '' : a;
-                });
-    
-                if (event.type === 'blur') {
-                    if (this.value.length == 2) {
-                        this.value = '';
-                    }
-                } else {
-                    setCursorPosition(this.value.length, this);
-                }
-        }
 
-        let phone = document.querySelector('[name="phone"]');
+            if (def.length >= val.length || this.value.charAt(1) !== checkMask) {
+                val = def;
+            }
+
+            this.value = matrix.replace(/./g, function (a) {
+                return /[_\d]/.test(a) && i < val.length ? val.charAt(i++) : i >= val.length ? '' : a;
+            });
+
+            if (event.type === 'blur') {
+                if (this.value.length == 2) {
+                    this.value = '';
+                }
+            } else {
+                setCursorPosition(this.value.length, this);
+            }
+        }
+            try {
+                let phone = document.querySelector('[name="phone"]');
+
+                phone.addEventListener('input', createMask);
+                phone.addEventListener('focus', createMask);
+                phone.addEventListener('blur', createMask);
+            } catch (error) {
+                
+            }
         
-            phone.addEventListener('input', createMask);
-            phone.addEventListener('focus', createMask);
-            phone.addEventListener('blur', createMask);
 
-        }
+    }
 
     init() {
         this.sortingForm();
