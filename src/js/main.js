@@ -3,8 +3,13 @@ import SliderMini from './modules/slider/slider-mini';
 import Difference from './modules/difference';
 import VideoPlay from './modules/playVideo';
 import Forms from './modules/forms';
+import Accordeon from './modules/accordeon';
+import download from './modules/download';
+import Download from './modules/download';
 
 window.addEventListener('DOMContentLoaded', () => {
+
+
     const slider = new MainSliders({ container : '.page', btns : '.next'});
     slider.render();
     const sliderModulew = new MainSliders({ container : '.moduleapp', btns : '.sidecontrol__controls .next', prevModules : '.prevmodule',  nextModules: '.nextmodule'});
@@ -24,6 +29,10 @@ window.addEventListener('DOMContentLoaded', () => {
     new Forms().init();
 
 
-    const player = new VideoPlay('.showup .play', '.overlay');
-    player.init();
+    new VideoPlay('.showup .play', '.overlay').init();
+    new VideoPlay('.module__video-item .play', '.overlay').init();
+
+    new Accordeon('.module__info .plus', '.module__info .msg').init();
+
+    new Download('.download').init();
 });

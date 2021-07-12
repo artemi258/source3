@@ -2084,6 +2084,27 @@ a:active {
       transform: translateZ(0);
     }
   }
+  @keyframes fadeInBottomBack {
+    from {
+      opacity: 1;
+      transform: translateZ(0);
+    }
+  
+    to {
+      opacity: 0;
+      transform: translate3d(0, 100%, 0);
+    }
+  }
+  .fadeInBottomAccordBack {
+    animation-name: fadeInBottomBack;
+    animation-duration: 0.6s;
+    animation-timing-function: linear;
+  }
+  .fadeInBottomAccord {
+    animation-name: fadeInBottom;
+    animation-duration: 0.6s;
+    animation-timing-function: linear;
+  }
   .fadeInBottom {
     animation-name: fadeInBottom;
     animation-duration: 0.7s;
